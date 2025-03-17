@@ -13,13 +13,16 @@ def hgs_tsr(df):
     """
     df = df.copy()
     df['reduced_test_LOC_HGS'] = (df['test_LOC'] * 0.65).astype(int)  # Keeping ~65% of test cases
+    df['travis_duration_days'] = df['travis_duration_days'] * (df['reduced_test_LOC_HGS'] / df['test_LOC'])
+    df['travis_duration_days'] = df['travis_duration_days'].fillna(df['travis_duration_days'].mean())
+
     return df
 
 def save_hgs_tsr(input_file, output_file):
     df = pd.read_csv(input_file)
     df = hgs_tsr(df)
+    # df = df[['repo_name', 'total_LOC', 'test_LOC', 'reduced_test_LOC_HGS']]
     df.to_csv(output_file, index=False)
-    print(f"HGS TSR applied and saved to {output_file}")
 
 if __name__ == "__main__":
     save_hgs_tsr("data.csv", "processed_hgs.csv")

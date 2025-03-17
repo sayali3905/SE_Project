@@ -11,7 +11,7 @@ def compute_fbdl(df, column_name):
         column_name (str): Name of the column containing reduced test cases.
 
     Returns:
-        DataFrame: Dataset with computed FBDL.
+            DataFrame: Dataset with computed FBDL.
     """
     df = df.copy()
     df['FBDL'] = ((df['test_LOC'] - df[column_name]) / df['test_LOC']).round(2)
@@ -21,7 +21,6 @@ def save_fbdl(input_file, column_name, output_file):
     df = pd.read_csv(input_file)
     df = compute_fbdl(df, column_name)
     df.to_csv(output_file, index=False)
-    print(f"FBDL computed and saved to {output_file}")
 
 if __name__ == "__main__":
     save_fbdl("processed_greedy.csv", "reduced_test_LOC", "fbdl_greedy.csv")

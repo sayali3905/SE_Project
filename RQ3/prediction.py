@@ -55,7 +55,7 @@ def train_xgboost_models(dataframes):
     xgb_predictions = {}
 
     for method, df in dataframes.items():
-        print(f"\nTraining XGBoost Model for {method}...")
+        print(f"\nTraining XGBoost Model for {method}..")
 
         features = ['stars', 'issues', 'open_prs', 'closed_prs', 'total_prs', 'size_mb', 'travis_duration_days', 'total_LOC', 'test_LOC']
         target = 'FBDL'
@@ -97,11 +97,25 @@ def plot_predictions(predictions, model_name, filename):
     plt.savefig(plot_path)
     plt.show()
 
-    print(f"{model_name} prediction comparison plot saved to {plot_path}")
+def rank_tsr_methods(rf_results, xgb_results):
+    """Ranks TSR methods based on model performance and efficiency"""
+    ranking = []
+
+    for method in rf_results:
+        rf_mae, rf_r2 = rf_results[method]["MAE"], rf_results[method]["R² Score"]
+        xgb_mae, xgb_r2 = xgb_results[method]["MAE"], xgb_results[method]["R² Score"]
+        best_model = "Random Forest" if rf_mae < xgb_mae else "XGBoost"
+
+        ranking.append({
+            "TSR Method": method,
+            "RF MAE": rf_mae, "RF R²": rf_r2,
+            "XGB MAE": xgb_mae, "XGB R²": xgb_r2,
+            "Best Model": best_model
+        })
+
+    return pd.DataFrame(ranking).sort_values(by=["XGB MAE", "RF MAE"])
 
 if __name__ == "__main__":
-    print("Training ML Models to Predict FBDL for All TSR Methods...")
-
     dataframes = load_ml_data()
 
     # Train Random Forest
@@ -114,6 +128,9 @@ if __name__ == "__main__":
 
     print("\nModel Comparison:")
     for method in rf_results:
-        print(f"\n🔹 {method}")
+        print(f"\n  {method}")
         print(f"  - Random Forest: MAE={rf_results[method]['MAE']:.4f}, R²={rf_results[method]['R² Score']:.4f}")
         print(f"  - XGBoost: MAE={xgb_results[method]['MAE']:.4f}, R²={xgb_results[method]['R² Score']:.4f}")
+
+    ranking_df = rank_tsr_methods(rf_results, xgb_results)
+    print(ranking_df)

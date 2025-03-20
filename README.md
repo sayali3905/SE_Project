@@ -26,7 +26,7 @@ RQ3 folder addresses the research question3 and contains the following contents:
 - main.py – Runs the full pipeline, applying TSR methods, generating results, and triggering evaluation.
 - evaluation.py – Computes FBDL, correlation values, and other performance metrics for each TSR method.
 - prediction.py – Trains and evaluates Random Forest and XGBoost models to predict CI execution time.
-  More details are available in the RQ3-specific README.
+More details are available in the RQ3-specific README.
 
 For RQ4 folder that addresses the last research question, please clone this repository and use the files in this folder in the following ways : 
 - FINAL SE DATA.csv : consists of a comprehensive dataset with the original attributes along with the various factors that are used to analyze the behaviour of test coverage and ratio due to the incorporation of Travis CI for every repository.

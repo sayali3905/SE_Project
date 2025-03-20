@@ -8,7 +8,7 @@ features added?
 4. Analyzing trends before and after the adoption of CI and their correlation with test code ratio and
 test coverage. What key factors influence the test code ratio?
 
-Data_Collection folder demonstrates the data collection steps and filtering methods.
+DataCollection folder demonstrates the data collection steps and filtering methods.
 Final_repositories.csv file contains the dataset of 70 repositories which are used for analysis.
 
 RQ1 folder answers the research question 1 and contains the following contents:

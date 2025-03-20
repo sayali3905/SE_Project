@@ -17,5 +17,8 @@ RQ1 folder addresses the research question 1 and contains the following contents
 - /Churn_Rate_Calculation.sh - Code Churn Rate calculation for test code evolution  
 - /Cyclomatic_Complexity_Calculation.sh - Cyclomatic Complexity for test code maintainability  
 
-
+For RQ4 folder that addresses the last research question, please clone this repository and use the files in this folder in the following ways : 
+- FINAL SE DATA.csv : consists of a comprehensive dataset with the original attributes along with the various factors that are used to analyze the behaviour of test coverage and ratio due to the incorporation of Travis CI for every repository.
+- SE_Project.ipynb : the actual notebook containing the analysis
+- commits.ipynb and test_files_and_committers_extraction (1).ipynb : used for cloning and pulling the factor related details for every repository.
 

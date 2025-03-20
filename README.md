@@ -11,10 +11,10 @@ test coverage. What key factors influence the test code ratio?
 DataCollection folder demonstrates the data collection steps and filtering methods.
 Final_repositories.csv file contains the dataset of 70 repositories which are used for analysis.
 
-RQ1 folder answers the research question 1 and contains the following contents:
-/Analysis_Code_Churn_Rate.ipynb - Plots and statistical tests for code churn rate
-/Analysis_Cyclomatic_Complexity.ipynb - Plots and statistical tests for cyclomatic_complexity
-/Churn_Rate_Calculation.sh - Code Churn Rate calculation for test code evolution
-/Cyclomatic_Complexity_Calculation.sh - Cyclomatic Complexity for test code maintainability
+RQ1 folder answers the research question 1 and contains the following contents: \\
+/Analysis_Code_Churn_Rate.ipynb - Plots and statistical tests for code churn rate \\
+/Analysis_Cyclomatic_Complexity.ipynb - Plots and statistical tests for cyclomatic_complexity \\
+/Churn_Rate_Calculation.sh - Code Churn Rate calculation for test code evolution \\
+/Cyclomatic_Complexity_Calculation.sh - Cyclomatic Complexity for test code maintainability \\
 
 

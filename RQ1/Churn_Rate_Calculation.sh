@@ -1,9 +1,8 @@
-$ #!/bin/bash
+#!/bin/bash
 
 CSV_FILE="../Final_repositories.csv"
 OUTPUT_FILE="churn_results.csv"
 
-#remove previous output file if exists
 rm -f "$OUTPUT_FILE"
 
 tail -n +2 "$CSV_FILE" | while IFS=, read -r repo_name stars issues open_prs closed_prs total_prs language is_fork url size_mb uses_travis travis_start_date travis_end_date travis_duration_days; do
@@ -16,26 +15,25 @@ tail -n +2 "$CSV_FILE" | while IFS=, read -r repo_name stars issues open_prs clo
 
   cd "$repo_name" || continue
 
-  #find initial commit before Travis CI adoption
+  #initial commit before Travis CI adoption
   initial_commit=$(git rev-list -1 --before="$travis_start_date" HEAD)
 
-  #find test files based on directory structure and file naming patterns
+  #test files based on directory structure and file naming patterns
   test_files=$(git ls-tree -r "$initial_commit" --name-only | grep -E "(/|^)(test[s]?|spec|src|app|script)/.*|.*(Test.java|Spec.js|test_.*\.py|test_.*\.php|test_.*\.c|test_.*\.cpp|test_.*\.rb)$")
 
-  #compute initial LOC
-  initial_loc=$(echo "$test_files" | xargs -I {} git show "$initial_commit:{}" | wc -l)
+  #initial LOC
+  initial_loc=$(echo "$test_files" | xargs -I {} git show "$initial_commit:{}" 2>/dev/null | wc -l)
 
   echo "$repo_name,Initial LOC,$initial_loc"
   echo "$repo_name,N/A,Initial LOC,$initial_loc" >> "$OUTPUT_FILE"
 
-  #loop through months from -12 to +12
   for i in {-12..12}; do
     month=$(date -d "$(date -d "$travis_start_date" +%Y-%m-01) $i months" +%Y-%m)
     [ -z "$month" ] && continue
 
     echo "Processing: $repo_name - $month"
 
-    #compute additions & deletions in test files
+    #additions & deletions in test files
     stats=$(git log --since="$month-01" --until="$(date -d "$month-01 +1 month" +%Y-%m-%d)" --numstat -- \
       -- "*Test.java" "*Spec.js" "test_*.py" "test_*.php" "test_*.c" "test_*.cpp" "test_*.rb" \
       $(echo "$test_files" | xargs -I {} echo "-- {}") | awk 'NF==3 && $1 ~ /^[0-9]+$/ && $2 ~ /^[0-9]+$/ {added+=$1; deleted+=$2} END {print added, deleted}')
@@ -56,4 +54,10 @@ tail -n +2 "$CSV_FILE" | while IFS=, read -r repo_name stars issues open_prs clo
       churn_rate=$(awk "BEGIN {print ($additions + $deletions) / $initial_loc}")
     else
       churn_rate=0
-done ..o "$repo_name,$month,Churn Rate,$churn_rate" >> "$OUTPUT_FILE"
+    fi
+
+    echo "$repo_name,$month,Churn Rate,$churn_rate" >> "$OUTPUT_FILE"
+  done
+
+  cd ..
+done

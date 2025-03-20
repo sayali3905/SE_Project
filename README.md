@@ -24,6 +24,6 @@ It is dependent on FINAL_repositiories.csv present in the main folder for data.
 
 For RQ4 folder that addresses the last research question, please clone this repository and use the files in this folder in the following ways : 
 - FINAL SE DATA.csv : consists of a comprehensive dataset with the original attributes along with the various factors that are used to analyze the behaviour of test coverage and ratio due to the incorporation of Travis CI for every repository.
-- SE_Project.ipynb : the actual notebook containing the analysis
+- RQ4_Before vs After CI.ipynb : the actual notebook containing the analysis
 - commits.ipynb and test_files_and_committers_extraction (1).ipynb : used for cloning and pulling the factor related details for every repository.
 

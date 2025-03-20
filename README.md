@@ -17,9 +17,10 @@ RQ1 folder addresses the research question 1 and contains the following contents
 - /Churn_Rate_Calculation.sh - Code Churn Rate calculation for test code evolution  
 - /Cyclomatic_Complexity_Calculation.sh - Cyclomatic Complexity for test code maintainability
 
-RQ2 folder addresses the research question 1 and contains the following contents:
-- /RQ2 Analysis.ipynb - Analysis of correlations between test LOC and total LOC, as well as test LOC and closed PRs. 
+RQ2 folder addresses the research question 2 and contains the following contents:
+- /RQ2 Analysis.ipynb - Analysis of correlations between test LOC and total LOC and test LOC and closed PRs. 
 - /RQ2 Final Analysis.ipynb - Advanced analysis incorporating clustering, PCA visualization, and partial correlation analysis for deeper insights.
+It is dependent on FINAL_repositiories.csv present in the main folder for data.
 
 For RQ4 folder that addresses the last research question, please clone this repository and use the files in this folder in the following ways : 
 - FINAL SE DATA.csv : consists of a comprehensive dataset with the original attributes along with the various factors that are used to analyze the behaviour of test coverage and ratio due to the incorporation of Travis CI for every repository.

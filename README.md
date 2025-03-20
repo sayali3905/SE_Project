@@ -22,6 +22,12 @@ RQ2 folder addresses the research question 2 and contains the following contents
 - /RQ2 Final Analysis.ipynb - Advanced analysis incorporating clustering, PCA visualization, and partial correlation analysis for deeper insights.
 It is dependent on FINAL_repositiories.csv present in the main folder for data.
 
+RQ3 folder addresses the research question3 and contains the following contents:
+- main.py – Runs the full pipeline, applying TSR methods, generating results, and triggering evaluation.
+- evaluation.py – Computes FBDL, correlation values, and other performance metrics for each TSR method.
+- prediction.py – Trains and evaluates Random Forest and XGBoost models to predict CI execution time.
+  More details are available in the RQ3-specific README.
+
 For RQ4 folder that addresses the last research question, please clone this repository and use the files in this folder in the following ways : 
 - FINAL SE DATA.csv : consists of a comprehensive dataset with the original attributes along with the various factors that are used to analyze the behaviour of test coverage and ratio due to the incorporation of Travis CI for every repository.
 - RQ4_Before vs After CI.ipynb : the actual notebook containing the analysis

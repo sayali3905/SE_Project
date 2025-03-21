@@ -29,7 +29,9 @@ RQ3 folder addresses the research question3 and contains the following contents:
 - More details are available in the RQ3-specific README.
 
 For RQ4 folder that addresses the last research question, please clone this repository and use the files in this folder in the following ways : 
-- FINAL SE DATA.csv : consists of a comprehensive dataset with the original attributes along with the various factors that are used to analyze the behaviour of test coverage and ratio due to the incorporation of Travis CI for every repository.
+- FINAL DATASET LAST.csv : consists of a comprehensive dataset with the original attributes along with the various factors that are used to analyze the behaviour of test coverage and ratio due to the incorporation of Travis CI for every repository.
+- FINAL DATASET LAST DOMAIN : consists of previous dataset with included domain of the software. Used for analysing important factors affecting Test Ratio.
 - RQ4_Before vs After CI.ipynb : the actual notebook containing the analysis
+- IMPORTANT FACTORS AFFECTING TEST RATIO.ipynb : consists of collection of domain, linear mixed model calculating important factors and their respective coeff. and visualizing it through a graph. 
 - commits.ipynb and test_files_and_committers_extraction (1).ipynb : used for cloning and pulling the factor related details for every repository.
 
